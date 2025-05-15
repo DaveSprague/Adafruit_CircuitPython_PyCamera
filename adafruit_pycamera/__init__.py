@@ -495,6 +495,11 @@ See Learn Guide."""
         return self.autofocus_init_from_file(binfile)
 
     @property
+    def battery_voltage(self):
+        """Read the battery voltage."""
+        return board.BATTERY_MONITOR.value * 2 * 3.3 / 65536
+
+    @property
     def autofocus_status(self):
         """Read the camera autofocus status register"""
         return self.read_camera_register(_OV5640_CMD_FW_STATUS)

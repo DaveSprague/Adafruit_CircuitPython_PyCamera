@@ -34,6 +34,7 @@ from adafruit_debouncer import Button, Debouncer
 from adafruit_display_text import label
 from digitalio import DigitalInOut, Pull
 from rainbowio import colorwheel
+from analogio import AnalogIn
 
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_PyCamera.git"
@@ -497,7 +498,7 @@ See Learn Guide."""
     @property
     def battery_voltage(self):
         """Read the battery voltage."""
-        return board.BATTERY_MONITOR.value * 2 * 3.3 / 65536
+        return AnalogIn(board.BATTERY_MONITOR).value * 2 * 3.3 / 65536
 
     @property
     def autofocus_status(self):
